@@ -1,0 +1,40 @@
+<header> 
+    <nav class = "navigator-bar">
+        <!-- Botón hamburguesa visible solo en el móvil -->
+        <button class = "menu-toggle" [class.open] = "menuOpen" (click) = "toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menú de navegación -->
+        <ul [class.open] = "menuOpen"> 
+            <li><a href = "#info" (click) = "handleLinkClick()">Información</a></li>
+            <li><a href = "#servicios" (click) = "handleLinkClick()">Servicios</a></li>
+            <li><a href = "#contacto" (click) = "handleLinkClick()">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class = "slideshow"> 
+    <div class = "slide-images" *ngFor = "let slide of slides; let i = index" [class.active] = "i === currentSlide"> 
+        <img [src] = "slide.image" alt = "Imagen {{ i + 1 }}">
+        <div class = "caption">{{ slide.text }}</div>
+    </div>
+</div>
+
+<!-- SECCIONES -->
+<section id = "info">
+    <h2>Información</h2>
+    <p>Aquí va la información principal del sitio.</p>
+</section>
+
+<section id = "servicios">
+    <h2>Servicios</h2>
+    <p>Detalles sobre lo que ofreces.</p>
+</section>
+
+<section id = "contacto">
+    <h2>Contacto</h2>
+    <p>Formulario o datos de contacto.</p>
+</section>

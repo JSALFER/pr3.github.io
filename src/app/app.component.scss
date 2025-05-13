@@ -1,0 +1,15 @@
+/* estilos generales */
+body {
+    font-size: 16px;
+  }
+  
+  /* estilos para pantallas pequeñas */
+  @media (max-width: 600px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .menu {
+      flex-direction: column;
+    }
+  }
