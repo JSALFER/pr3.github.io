@@ -1,0 +1,88 @@
+// Barra de navegación
+nav {
+    background-color: #006400; 
+    padding: 10px;
+    position: relative;
+    z-index: 10;
+  
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25px;
+        height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+      
+        span {
+          display: block;
+          height: 3px;
+          background: white;
+          border-radius: 2px;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+      
+        &.open {
+          span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+          }
+      
+          span:nth-child(2) {
+            opacity: 0;
+          }
+      
+          span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+          }
+        }
+      }
+  
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+  
+      li {
+        margin-right: 20px;
+  
+        a {
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: flex;
+      }
+  
+      ul {
+        display: none;
+        flex-direction: column;
+        background-color: #006400;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+  
+        &.open {
+          display: flex;
+        }
+  
+        li {
+          margin: 10px 0;
+          text-align: center;
+        }
+      }
+    }
+  }
