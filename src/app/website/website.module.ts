@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -6,11 +6,11 @@ import { MaterialModule } from '../material/material.module';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
-
+ 
 @NgModule({
   declarations: [
     LayoutComponent, 
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -18,4 +18,5 @@ import { HeaderComponent } from './components/header/header.component';
     WebsiteRoutingModule
   ]
 })
+
 export class WebsiteModule { }

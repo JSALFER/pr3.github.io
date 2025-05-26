@@ -1,3 +1,8 @@
+<!-- LOGO EMPRESA -->
+<div class = "logo"> 
+    <img src = "assets/images/logo.png" alt = "AgroTech Forge">
+</div>
+
 <header> 
     <nav class = "navigator-bar">
         <!-- Botón hamburguesa visible solo en el móvil -->
@@ -9,9 +14,10 @@
 
         <!-- Menú de navegación -->
         <ul [class.open] = "menuOpen"> 
-            <li><a href = "#info" (click) = "handleLinkClick()">Informação</a></li>
-            <li><a href = "#servicios" (click) = "handleLinkClick()">Servicios</a></li>
-            <li><a href = "#contacto" (click) = "handleLinkClick()">Contacto</a></li>
+            <li><a href = "#quienes-somos" (click) ="handleLinkClick()">Quiénes somos</a></li>
+            <li><a href = "#tools" (click) = "handleLinkClick()">Herramientas</a></li>
+            <li><a href = "#tecnologias" (click) = "handleLinkClick()">Tecnologías</a></li>
+            <li><a href = "#robots" (click) = "handleLinkClick()">Robots utilizados</a></li>
         </ul>
     </nav>
 </header>
@@ -24,17 +30,93 @@
 </div>
 
 <!-- SECCIONES -->
-<section id = "info">
-    <h2>Información</h2>
-    <p>Aquí va la información principal del sitio.</p>
+
+<!-- QUIÉNES SOMOS-->
+<section id = "quienes-somos" class = "quienes-somos-section"> 
+    <div class = "contenido"> 
+        <div class = "columna titulo"> 
+            <h2><b>¿Quiénes somos?</b></h2>
+        </div>
+        <div class = "columna descripcion"> 
+            <p>
+                El principal objetivo de AgroTech Forge es la automatización del proceso de ensamblaje
+                en la fabricación de herramientas de jardinería, con el objetivo de optimizar la 
+                producción, mejorar la calidad de los productos finales, y reducir tiempos y costos de 
+                manufactura. Esta automatización busca la implementación de tecnologías avanzadas que 
+                permiten soldaduras más precisas y uniformes, minimizando la intervención manual y posibles
+                errores humanos. 
+            </p>
+        </div>
+    </div>
 </section>
 
-<section id = "servicios">
-    <h2>Servicios</h2>
-    <p>Detalles sobre lo que ofreces.</p>
+<!-- HERRAMIENTAS -->
+<section id = "tools" class = "tools-section">
+    <h2>Herramientas</h2>
+    <div class = "object-grid">
+        <div class = "object-card" *ngFor = "let obj of objetos" (click) = "mostrarObjeto(obj)"> 
+            <img [src] = "obj.imagen" alt = "{{ obj.titulo }}">
+            <h3>{{ obj.titulo }}</h3>
+            <p>{{ obj.descripcion }}</p>
+        </div>
+    </div>
 </section>
 
-<section id = "contacto">
-    <h2>Contacto</h2>
-    <p>Formulario o datos de contacto.</p>
+<!-- MODAL -->
+<div class = "modal-overlay" *ngIf = "objetoSeleccionado" (click) = "cerrarModal()">
+    <div class = "modal-content" (click) = "$event.stopPropagation()">
+        <img [src] = "objetoSeleccionado.imagen" alt = "{{ objetoSeleccionado.titulo }}">
+        <h3>{{ objetoSeleccionado.titulo }}</h3>
+        <p>{{ objetoSeleccionado.descripcion }}</p>
+        <button (click) = "cerrarModal()">Cerrar</button>
+    </div>
+</div>
+
+<!-- TECNOLOGÍAS -->
+<section id = "tecnologias" class = "tecnologias-section">
+    <div class = "contenido">
+        <h2>🛠️ Tecnologías utilizadas</h2>
+        <p>Estas son las diferentes herramientas y tecnologías empleadas en el desarrollo del proyecto.</p>
+        <div class = "grid-container"> 
+            <div class = "tecnologia" *ngFor = "let tech of tecnologias"> 
+                <img [src] = "tech.image" alt = "tech.text">
+                <p>{{ tech.text }}</p>
+            </div>
+        </div>
+    </div>
 </section>
+
+<section id = "robots" class = "robots-section"> 
+    <h2>🤖 Robots utilizados</h2>
+    <div class = "object-grid"> 
+        <div class = "object-card" *ngFor = "let robot of robots">
+            <img [src] = "robot.image" [alt] = "robot.title">
+            <h3>{{ robot.title }}</h3>
+            <p>{{ robot.description }}</p>
+            <a [href] = "robot.documentation" target = "_blank" class = "doc-link">Ver documentación 📄</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class = "footer"> 
+    <div class = "footer-container">
+        <div class = "footer-section">
+            <h4>Contacto</h4>
+            <p>Email: contacto&#64;agrotechforge.com</p>
+            <p>Teléfono: +34 123 456 789</p>
+            <p>Dirección: Universitat Politècnica de València, Valencia, España</p>
+        </div>
+        <div class ="footer-section">
+            <h4>Síguenos</h4>
+            <div class = "social-icons">
+                <img src = "assets/images/facebook.png" alt = "Facebook">
+                <img src = "assets/images/linkedin.png" alt = "Linkedin">
+                <img src = "assets/images/instagram.png" alt = "Instagram">
+            </div>
+        </div>
+    </div>
+    <div class = "footer-bottom"> 
+        <p>&copy; 2025 AgroTech Forge. Todos los derechos reservados.</p>
+    </div>
+</footer>
